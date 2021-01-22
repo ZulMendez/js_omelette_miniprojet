@@ -25,12 +25,8 @@ let personne = {
     couper(ingredients){
         ingredients.etat = "coupé"
         console.log(`${ingredients.nom} est maintenant ${ingredients.etat}`);
-        // console.log(`${this.nom} coupe ${this.Ingredients} avec ${this.outil}`);
     }
 }
-
-
-
 // * Créer un lieu "maison" (un objet) avec comme propriété "nom: 'maison'" et "personnes = []" => qui sera un tableau de personnes présentes dans la maison :
 // */
 let maison = {
@@ -89,7 +85,6 @@ let poele = {
         }, 4000)
     }
 }
-poele.cuir();
 
 // Créer un bol avec un tableau comme contenu
 // ajouter une méthode melanger(nomMelange) qui va créer un nouvel objet "newMelange" avec comme nom la variable nomMelange passé en paramètre et avec 'pas cuit' en etat. cette méthode remplacera this.contenu par [l'obj newMelange]
@@ -97,13 +92,12 @@ let bol = {
     contenu: [],
     melanger(nomMelange){
         let newMelange = {
-            nomMelange: nomMelange,
+            nom: nomMelange,
             etat: 'pas cuit'
         }
         this.contenu = [newMelange];
     }
 }
-
 bol.melanger('omelette');
 console.log(bol);
 
@@ -169,12 +163,16 @@ personne.seDeplacer(maison);
 
 // Vérifier chaque ingrédient dans le bol et le couper seulement s'il est entier ! Pour ça on utilise la méthode couper de personnage
 personne.couper(bol.contenu[1]);
+
 // Mélanger le contenu du bol avec la méthode melanger. on va nommer ce mélange une 'omelette' (à passer en param).
-
+bol.melanger('omelette');
+console.log(bol.contenu);
 // Afficher un message avec le nouveau mélange
-
+console.log(`${bol.contenu} sont melangés`);
 // vider le contenu du bol dans la poele. Il ne doit plus rien avoir dans le bol et y avoir juste l'omelette pas cuite.
-
-// Cuire l'omelette avec la méthode de la poele 
-
+poele.contenu.push(bol.contenu)
+console.log(poele);
+// Cuire l'omelette avec la méthode de la poele
+poele.cuir()
+console.log(poele);
 // Afficher un message final, notre omelette est cuite :)
