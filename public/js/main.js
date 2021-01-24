@@ -66,7 +66,7 @@ let fromage = new Ingredients('fromage', 'coupé', 2.5);
 let epicerie = {
     nom: 'épicerie',
     personnes: [],
-    paniers: [panier= {
+    paniers: [ panier= {
         type: 'panier', 
         contenu: [],
     }],
@@ -80,7 +80,7 @@ let poele = {
     cuir() {
         setTimeout(()=> {
             if (this.contenu[0] == 0) {
-                console.log('cuit');
+                console.log(`cuit..`); 
             }
         }, 4000)
     }
@@ -146,7 +146,7 @@ personne.mainDroite[0].contenu.forEach(element => {
 });
 
 // Vérifier que les ingrédients ne se trouvent plus dans le panier (oups ! on a oublié de le rapporter x)
-personne.mainDroite.splice(epicerie.paniers[0]);
+personne.mainDroite.splice(epicerie.paniers);
 
 // Afficher un petit message de chaque ingrédient qu'on met dans le bol.
 
@@ -170,9 +170,20 @@ console.log(bol.contenu);
 // Afficher un message avec le nouveau mélange
 console.log(`${bol.contenu} sont melangés`);
 // vider le contenu du bol dans la poele. Il ne doit plus rien avoir dans le bol et y avoir juste l'omelette pas cuite.
-poele.contenu.push(bol.contenu)
-console.log(poele);
+bol.contenu.push(poele)
+console.log(bol);
 // Cuire l'omelette avec la méthode de la poele
 poele.cuir()
-console.log(poele);
+// console.log(poele);
 // Afficher un message final, notre omelette est cuite :)
+let omelette = {
+    contenu: [0],
+    cuir2() {
+        setTimeout(() => {
+            if (this.contenu[0] == 0) {
+                console.log(`notre omelette est cuite :)`);
+            }
+        }, 5000)
+    }
+}
+omelette.cuir2()
